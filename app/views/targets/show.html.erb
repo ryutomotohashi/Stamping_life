@@ -1,0 +1,26 @@
+<h1>Targets#show</h1>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-4">
+      <%= render "users/info", user: @target.user %>
+    </div>
+    <div clsas = "col-7">
+      <div class = "card">
+        <div class ="card-header">
+          <h4>自分の目標は<strong><%= "#{@target.title}" %></strong>です</h4>
+        </div>
+        <div class = "card-body">
+          <h5 class ="card-text">
+            概要
+          </h5>
+          <p><%= @target.description %></p>
+          <%= link_to edit_target_path(@target) do %>
+            <button type = "button" class = "btn btn-warning">編集</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
