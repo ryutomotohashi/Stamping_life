@@ -1,26 +1,33 @@
-<h1>Targets#show</h1>
+<h1>目標の詳細</h1>
 <div class = "container">
   <div class = "row">
     <div class = "col-4">
       <%= render "users/info", user: @target.user %>
     </div>
-    <div clsas = "col-7">
-      <div class = "card">
-        <div class ="card-header">
-          <h4>自分の目標は<strong><%= "#{@target.title}" %></strong>です</h4>
-        </div>
-        <div class = "card-body">
-          <h5 class ="card-text">
-            概要
-          </h5>
+    <div class = "col-8">
+      <div>
+        <h5>自分の目標は『<strong><%= "#{@target.title}" %></strong>』です</h5>
+        <div>
           <p><%= @target.description %></p>
-          <%= link_to edit_target_path(@target) do %>
-            <button type = "button" class = "btn btn-warning">編集</button>
+          <% if @target.user == current_user %>
+            <p>
+              <%= link_to edit_target_path(@target) do %>
+                <button type = "button" class = "btn btn-warning btn-sm">編集</button>
+              <% end %>
+            </p>
           <% end %>
+          <p><%= @target.created_at.strftime("%Y/%m/%d") %></p>
+          <p><%= render "favorites/btn", target: @target %></p>
+        </div>
+      </div>
+      <div>
+        <%= render "target_comments/comment_index", target: @target %>
+      </div>
+      <div>
+        <div>
+          <%= render "target_comments/comment_form", target: @target, comment: @comment %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

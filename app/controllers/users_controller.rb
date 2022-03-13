@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @targets = Target.where(user_id: @user)
+    # @targets = Target.find(params[:id])
   end
 
   def edit
