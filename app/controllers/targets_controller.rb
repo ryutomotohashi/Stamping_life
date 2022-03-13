@@ -18,6 +18,7 @@ class TargetsController < ApplicationController
 
   def show
     @target = Target.find(params[:id])
+    @comment = TargetComment.new
   end
 
   def edit
