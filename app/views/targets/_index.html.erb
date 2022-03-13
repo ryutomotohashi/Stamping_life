@@ -1,0 +1,17 @@
+<% targets.each do |target| %>
+  <div class = "card mb-2">
+    <h5 class = "card-header">
+      <%= target.title %>
+    </h5>
+    <div class = "card-body">
+      <p class = "card-text">
+        <%= target.description %>
+      </p>
+      <p class = "card-text">
+        <%= link_to target_path(target) do %>
+          <button type = "button" class = "btn btn-warning btn-sm">詳細</button>
+        <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>

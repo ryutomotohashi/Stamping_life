@@ -1,8 +1,0 @@
-<h2>ユーザー一覧</h2>
-
-<% @users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= user.name %>
-    <%= image_tag user.get_icon, size: "100x100" %>
-  <% end %>
-<% end %>

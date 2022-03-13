@@ -1,0 +1,22 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-4 text-center">
+      <h3>目標を決めよう</h3>
+    </div>
+  </div>
+    <div class = "col-8 offset-2">
+      <%= form_with model: @target, mrthod: :patch, local: true do |f| %>
+        <div class = "form-group">
+          <%= f.label :title %><br />
+          <%= f.text_field :title %>
+        </div>
+        <div class = "form-group">
+          <%= f.label :description %><br />
+          <%= f.text_field :description %>
+        </div>
+        <div class = "form-group">
+          <%= f.submit "作成" , class: "btn btn-warning"%>
+        </div>
+      <% end %>
+    </div>
+</div>
