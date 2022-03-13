@@ -12,50 +12,75 @@
 
   <body>
     <header>
-      <div class= "px-3 py-2 bg-warning text-white">
-        <div class = "container">
-          <div class = "d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <%= link_to root_path, class: "text-light" do %>
-              <%= image_tag 'stampinglife.PNG', size: '150x80' %>
+      <div class="px-3 py-2 bg-warning text-white">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+            <%= link_to root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" do %>
+              <%= image_tag 'stampinglife.PNG', size: '140x65' %>
             <% end %>
-            <% if user_signed_in? %>
-              <ul class = "nav col-12 col-lg-auto my-2 my-md-0 text-small">
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <% if user_signed_in? %>
                 <li>
-                  <%= link_to "HOME", root_path, class: "nav-link text-light" %>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-home fa-2x bi d-block mx-auto"></i>
+                    HOME
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "マイページ", user_path(current_user), class: "nav-link text-light" %>
+                  <%= link_to user_path(current_user), class: "nav-link text-light" do %>
+                    <i class="fas fa-user-circle fa-2x bi d-block mx-auto"></i>
+                    MY PAGE
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Targets", targets_path, class: "nav-link text-light" %>
+                  <%= link_to targets_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-users fa-2x bi d-block mx-auto"></i>
+                    TARGETS
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Stamping", class: "nav-link text-light" %>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-clock fa-2x bi d-block mx-auto"></i>
+                    STAMPING
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                    <i class="fas fa-sign-in-alt fa-2x bi d-block mx-auto"></i>
+                    LOG-OUT
+                  <% end %>
                 </li>
-              </ul>
-            <% else %>
-              <ul class = "nav col-12 col-lg-auto my-2 my-md-0 text-small">
+              <% else %>
                 <li>
-                  <%= link_to "HOME", root_path, class: "nav-link text-light"%>
-                </li>
-                <li>
-                  <%= link_to "使い方", about_path, class: "nav-link text-light" %>
-                </li>
-                <li>
-                  <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light" %>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                   <i class="fas fa-home fa-2x bi d-block mx-auto"></i>
+                   HOME
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Log in", new_user_session_path, class: "nav-link text-light" %>
+                  <%= link_to about_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-question fa-2x bi d-block mx-auto"></i>
+                    使い方
+                  <% end %>
                 </li>
-              </ul>
-            <% end %>
+                <li>
+                  <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-plus-circle fa-2x bi d-block mx-auto"></i>
+                    新規登録
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-sign-in-alt fa-2x bi d-block mx-auto"></i>
+                    LOG-IN
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
           </div>
         </div>
       </div>
-    </header>
+  </header>
     <%= yield %>
     <footer class = "footer bg-warning">
       <div class = "d-flex justify-content-center">
