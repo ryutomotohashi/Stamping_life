@@ -80,7 +80,20 @@
           </div>
         </div>
       </div>
-  </header>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class = "text-success">
+        <p class = "notice"><% notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class = "text-danger">
+        <p class = "alert"><% alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
     <footer class = "footer bg-warning">
       <div class = "d-flex justify-content-center">

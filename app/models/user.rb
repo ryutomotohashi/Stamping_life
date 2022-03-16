@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   #自分がフォローする側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   #自分がフォローした人の一覧をフォローされた人(followed)を参照して出力
@@ -17,6 +18,10 @@ class User < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :target_comments, dependent: :destroy
+  has_many :active_times, dependent: :destroy
+
+  validates :name, presence: true, length: {minimum: 2, maximum: 15}
+  validates :introduction, length: {maximum: 50}
 
   has_one_attached :profile_image
 
