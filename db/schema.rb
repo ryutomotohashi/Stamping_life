@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2022_03_16_075125) do
   end
 
   create_table "active_times", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "target_id"
     t.date "date"
     t.datetime "start_time"
@@ -49,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_075125) do
     t.integer "day_total_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "target_id", "date"], name: "index_active_times_on_user_id_and_target_id_and_date", unique: true
+    t.index ["target_id", "date"], name: "index_active_times_on_target_id_and_date", unique: true
   end
 
   create_table "favorites", force: :cascade do |t|

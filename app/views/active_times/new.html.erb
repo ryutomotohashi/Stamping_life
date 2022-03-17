@@ -1,0 +1,16 @@
+<div class = "container py-5">
+  <div class = "row">
+    <div class = "col-8">
+      <h3>打刻する目標を選択する</h3>
+        <%= form_with model: @stamp, url: stamps_path, local: true do |f| %>
+          <div class = "mb-3">
+            <%= f.select :target_id, options_from_collection_for_select(@target, :id, :title) %>
+          </div>
+          <div class = "mb-3">
+            <%= f.submit "打刻する", class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

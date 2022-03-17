@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-  resources :active_times, only:[:create,:show,:index,:update]
-
+  resources :active_times, only:[:new,:index,:create,:show,:update]
+  post "active_times/stamps" => "active_times#stamps", as: "stamps"
 end

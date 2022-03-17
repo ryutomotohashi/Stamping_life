@@ -1,9 +1,11 @@
 class ActiveTime < ApplicationRecord
 
-  belongs_to :user
   belongs_to :target
 
-  #1日1回の打刻のため、user_id,target_id,dateが同じものは重複しないバリデーション
-  validates :user_id, uniqueness: { scope: [:target_id, :date] }
+  #1日1回の打刻のため、target_id,dateが同じものは重複しないバリデーション
+  validates :target_id, uniqueness: { scope: :date }
+
+  #打刻開始時の処理
+  #打刻終了時の処理
 
 end

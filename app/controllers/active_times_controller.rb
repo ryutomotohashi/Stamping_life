@@ -1,11 +1,34 @@
 class ActiveTimesController < ApplicationController
 
-  def index
-    @time = ActiveTime.new
+  def new
+    @stamp = ActiveTime.new
+    @target = current_user.targets.all
+  end
+
+  def stamps
+    @stamp = ActiveTime.new(active_time_params)
+    @stamp.target_id = params[:active_time][:target_id]
   end
 
   def create
-    t = DateTime.now(date: t.year&t.month&t.day)
+    @stamp = ActiveTime.new(active_time_params)
+    binding.pry
+    @stamp.date = Date.current
+    @stamp.start_time = Time.current_user
+    @stamp.end_time
+    @stamp.day_total_time
+    if @stamp.save
+      redirect_to request.referer
+    else
+      @stamp = ActiveTime.new(active_time_params)
+      @target = current_user.targets.all
+      render :new
+    end
+
+  end
+
+  def index
+
   end
 
   def show
@@ -14,6 +37,12 @@ class ActiveTimesController < ApplicationController
 
   def update
 
+  end
+
+  private
+
+  def active_time_params
+    params.require(:active_time).permit(:date,:start_time,:end_time,:day_total_time,:target_id)
   end
 
 end
