@@ -7,5 +7,8 @@ class ActiveTime < ApplicationRecord
 
   #打刻開始時の処理
   #打刻終了時の処理
+  def diff_time
+    end_time-start_time/3600
+  end
 
 end

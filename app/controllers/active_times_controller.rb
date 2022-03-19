@@ -12,30 +12,33 @@ class ActiveTimesController < ApplicationController
 
   def create
     @stamp = ActiveTime.new(active_time_params)
-    binding.pry
     @stamp.date = Date.current
-    @stamp.start_time = Time.current_user
-    @stamp.end_time
-    @stamp.day_total_time
+    @stamp.start_time = Time.current
+    @stamp.end_time = ""
+    @stamp.day_total_time = ""
     if @stamp.save
-      redirect_to request.referer
+      # binding.pry
+      redirect_to request.referer, notice: "打刻を開始しました"
     else
-      @stamp = ActiveTime.new(active_time_params)
-      @target = current_user.targets.all
+      @stamp = ActiveTime.new
+    @target = current_user.targets.all
       render :new
     end
+  end
+
+  def index#打刻一覧(日時)
+
 
   end
 
-  def index
-
-  end
-
-  def show
+  def show#打刻詳細(編集もできる)
 
   end
 
   def update
+    @stamp = ActiveTime.where(end_time: nil)
+    @stamp.end_time = Time.current
+    @stamp.day_total_time
 
   end
 

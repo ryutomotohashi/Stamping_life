@@ -2,7 +2,8 @@
   <div class = "row">
     <div class = "col-10">
       <%= form_with model: @stamp, local: true do |f| %>
-        <%= f.submit "打刻開始", class: "btn btn-secondary btn-lg" %>
+        <%= f.hidden_field :target_id,value: @stamp.target_id %>
+        <%= f.submit "打刻開始", class: "btn btn-warning btn-lg" %>
       <% end %>
     </div>
   </div>
