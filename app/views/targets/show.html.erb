@@ -16,7 +16,7 @@
               <% end %>
             </p>
           <% end %>
-          <p><%= @target.created_at.strftime("%Y/%m/%d") %></p>
+          <p><%= @target.created_at.strftime("%Y年%m月%d日") %></p>
           <p><%= render "favorites/btn", target: @target %></p>
         </div>
       </div>

@@ -3,6 +3,12 @@ class Target < ApplicationRecord
 
   has_many :target_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :time_stamps, dependent: :destroy
+
+  with_options presence: true do
+    validates :title, length: {maximum: 20}
+    validates :description, length: {maximum: 150}
+  end
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

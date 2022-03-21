@@ -1,22 +1,24 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col-4 text-center">
-      <h3>目標を決めよう</h3>
+<div class = "container py-5">
+  <%= render "layouts/error", obj: @target %>
+  <div class = "row d-flex justify-content-center">
+    <div class = "col-5">
+      <h3>あなたの目標は?</h3>
+        <%= form_with model: @target, local: true do |f| %>
+          <div class = "mb-3">
+            <%= f.label :title, "目標の題名", class: "form-label" %><br />
+            <%= f.text_field :title, placeholder: "目標を20文字以内で入力してください",class: "form-control"%>
+          </div>
+          <div class = "mb-3">
+            <%= f.label :description, "目標の詳細説明や質問", class: "form-label"%><br />
+            <%= f.text_field :description,  placeholder: "詳細な説明や質問を150文字以内で入力してください",class: "form-control" %>
+          </div>
+          <div class = "mb-3">
+            <%= f.submit "目標を登録する" , class: "btn btn-warning"%>
+            <%= link_to :back do %>
+              <button type = "button" class = "btn btn-secondary ">戻る</button>
+            <% end %>
+          </div>
+        <% end %>
     </div>
   </div>
-    <div class = "col-8 offset-2">
-      <%= form_with model: @target, local: true do |f| %>
-        <div class = "form-group">
-          <%= f.label :title %><br />
-          <%= f.text_field :title %>
-        </div>
-        <div class = "form-group">
-          <%= f.label :description %><br />
-          <%= f.text_field :description %>
-        </div>
-        <div class = "form-group">
-          <%= f.submit "作成" , class: "btn btn-warning"%>
-        </div>
-      <% end %>
-    </div>
 </div>

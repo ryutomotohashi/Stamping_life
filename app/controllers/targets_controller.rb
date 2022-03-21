@@ -1,5 +1,6 @@
 class TargetsController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update,]
 
   def new
     @target = Target.new
@@ -8,8 +9,12 @@ class TargetsController < ApplicationController
   def create
     @target = Target.new(target_params)
     @target.user_id = current_user.id
-    @target.save
-    redirect_to user_path(current_user)
+    if @target.save
+      redirect_to user_path(current_user), notice: "目標を登録しました"
+    else
+      @target = Target.new
+      render :new
+    end
   end
 
   def index
@@ -22,18 +27,26 @@ class TargetsController < ApplicationController
   end
 
   def edit
-    @target = Target.find(params[:id])
   end
 
   def update
-    @target = Target.find(params[:id])
-    @target.update(target_params)
-    redirect_to user_path(current_user)
+    if @target.update(target_params)
+      redirect_to user_path(current_user), notice: "更新しました"
+    else
+      render :edit
+    end
   end
 
   private
 
   def target_params
     params.require(:target).permit(:title, :description)
+  end
+
+  def ensure_correct_user
+    @target = Target.find(params[:id])
+    unless @target.user == current_user
+      redirect_to root_path, alert: "不正なアクセスです"
+    end
   end
 end
