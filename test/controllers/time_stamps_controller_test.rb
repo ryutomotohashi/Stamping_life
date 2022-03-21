@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ActiveTimeTest < ActiveSupport::TestCase
+class TimeStampsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

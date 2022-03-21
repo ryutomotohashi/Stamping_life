@@ -3,7 +3,7 @@ class Target < ApplicationRecord
 
   has_many :target_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :active_times, dependent: :destroy
+  has_many :time_stamps, dependent: :destroy
 
   with_options presence: true do
     validates :title, length: {maximum: 20}

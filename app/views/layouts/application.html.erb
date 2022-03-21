@@ -39,7 +39,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_active_time_path, class: "nav-link text-light" do %>
+                  <%= link_to new_time_stamp_path, class: "nav-link text-light" do %>
                     <i class="fas fa-clock fa-2x bi d-block mx-auto"></i>
                     STAMPING
                   <% end %>
@@ -81,20 +81,20 @@
         </div>
       </div>
     </header>
-
+    <main>
     <% if flash[:notice] %>
-      <div class = "text-success">
-        <p class = "notice"><% notice %></p>
-      </div>
-    <% end %>
+        <div class = "text-success">
+          <p class = "notice"><% notice %></p>
+        </div>
+      <% end %>
 
-    <% if flash[:alert] %>
-      <div class = "text-danger">
-        <p class = "alert"><% alert %></p>
-      </div>
-    <% end %>
-
-    <%= yield %>
+      <% if flash[:alert] %>
+        <div class = "text-danger">
+          <p class = "alert"><% alert %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
     <footer class = "footer bg-warning">
       <div class = "d-flex justify-content-center">
         <%= image_tag 'stampinglife.PNG', size: '140x70' %>

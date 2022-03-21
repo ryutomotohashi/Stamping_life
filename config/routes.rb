@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-  resources :active_times, only:[:new,:index,:create,:show,:update]
-  post "active_times/stamps" => "active_times#stamps", as: "stamps"
+  # post "tims_stamps/stampstart" => "time_stamps#stampstart", as: "stampstart"
+  get "time_stamps/stamps/:id" => "time_stamps#stamps", as: "stamps"
+  patch "time_stamps/stamp" =>"time_stamps#endstamp", as: "endstamp"
+  # post "tims_stamps/stamps" => "time_stamps#start_time_stamp", as: "start_time_stamp"
+  # patch "tims_stamps/stamps" => "time_stamps#end_time_stamp", as: "end_time_stamp"
+  resources :time_stamps, only:[:new,:create,:show,:edit,:update,:index]
 end

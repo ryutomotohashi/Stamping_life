@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :target_comments, dependent: :destroy
-  has_many :active_times, dependent: :destroy
+  has_many :time_stamps, dependent: :destroy
 
   validates :name, presence: true, length: {minimum: 2, maximum: 15}
   validates :introduction, length: {maximum: 50}
