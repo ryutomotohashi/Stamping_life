@@ -1,0 +1,34 @@
+<div class = "container py-5">
+  <div class = "row">
+    <table class = "table">
+      <thead class = "">
+        <tr>
+          <th>日付</th>
+          <th>曜日</th>
+          <th>打刻開始時間</th>
+          <th>打刻終了時間</th>
+          <th>総時間</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= month_calendar events: @stamp_list do |date, stamp| %>
+          <tr>
+            <td><%= date.day %></td>
+              <% stamp.each do |stamp| %>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <%= link_to time_stamp_path(stamp.id) do %>
+                    <button type = "button" class = "btn btn-warning">詳細</button>
+                  <% end %>
+                </td>
+              <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,54 +1,31 @@
 class TimeStampsController < ApplicationController
 
-  def new
-    @stamp = TimeStamp.new
-    @targets = current_user.targets.all
+  def time_stamps
+    @stamp = TimeStamp.find_by(end_time: nil, user_id: current_user.id)
   end
 
-  def create
-    @stamp = TimeStamp.new(time_stamps_params)
-    @stamp.target_id = params[:time_stamp][:target_id]
-    @stamp.user_id = current_user.id
-    @stamp.date = Date.current
-    @stamp.start_time = Time.current
-    if @stamp.save
-      flash[:notice] = "打刻を開始します"
-      redirect_to stamps_path(@stamp)
+  def start_stamp
+    start_time = TimeStamp.new(date: Date.current, start_time: Time.current, end_time: nil, user_id: current_user.id)
+    if start_time.save
+      flash[:notice] = "打刻を開始しました"
+      redirect_to time_stamps_path
     else
-      @targets = current_user.targets.all
-      render :new
+      render :time_stamps
     end
-
   end
 
-  def stamps
+  def end_stamp
+    stamp = TimeStamp.find(params[:id])
+    stamp.update(end_time: Time.current)# binding.pry
+    redirect_to time_stamps_path
+  end
+
+  def stamp_list
+    @date = Date.today()
+    @stamp_list = TimeStamp.where(user_id: current_user)
+  end
+
+  def show
     @stamp = TimeStamp.find(params[:id])
-  end
-
-  def endstamp
-    @stamp = TimeStamp.where(end_time: nil)
-    @stamp.update(end_time: Time.current)
-    flash[:notice] = "打刻を終了しました"
-    redirect_to request.referer
-  end
-
-  def index#打刻一覧(日時)
-
-
-  end
-
-  def show#打刻詳細(編集もできる)
-
-  end
-
-  def update
-
-    # binding.pry
-  end
-
-  private
-
-  def time_stamps_params
-    params.require(:time_stamp).permit(:target_id, :date, :start_time, :end_time)
   end
 end

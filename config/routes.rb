@@ -15,10 +15,14 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-  # post "tims_stamps/stampstart" => "time_stamps#stampstart", as: "stampstart"
-  get "time_stamps/stamps/:id" => "time_stamps#stamps", as: "stamps"
-  patch "time_stamps/stamp" =>"time_stamps#endstamp", as: "endstamp"
-  # post "tims_stamps/stamps" => "time_stamps#start_time_stamp", as: "start_time_stamp"
-  # patch "tims_stamps/stamps" => "time_stamps#end_time_stamp", as: "end_time_stamp"
-  resources :time_stamps, only:[:new,:create,:show,:edit,:update,:index]
+  #打刻画面
+  get "time_stamps" => "time_stamps#time_stamps", as: "time_stamps"
+  #打刻開始
+  post "time_stamps" => "time_stamps#start_stamp", as: "start_stamp"
+  #打刻終了
+  patch "time_stamps/:id" => "time_stamps#end_stamp", as: "end_stamp"
+  #打刻一覧画面
+  get "stamplists" => "time_stamps#stamp_list", as: "stamp_list"
+  #打刻詳細画面とデータ更新
+  resources :time_stamps, only:[:show, :uodate]
 end
