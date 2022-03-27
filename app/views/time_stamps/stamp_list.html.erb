@@ -1,33 +1,46 @@
 <div class = "container py-5">
   <div class = "row">
-    <table class = "table">
-      <thead class = "">
+    <div class = "col-4">
+      <h3>総時間(月)<%= %></h3>
+    </div>
+    <div class = "col-6 d-flex justify-content-center">
+      <%= link_to action: "stamp_list", month: @date.last_month do %>
+        <i class="fas fa-angle-left fa-2x text-secondary"></i>
+      <% end %>
+      <h3><%= "#{@date.year}年#{@date.month}月" %></h3>
+      <%= link_to action: "stamp_list", month: @date.next_month do %>
+        <i class="fas fa-angle-right fa-2x text-secondary"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class = "row">
+    <table class = "table table-bordered text-center">
+      <thead class = "thead-dark">
         <tr>
           <th>日付</th>
           <th>曜日</th>
           <th>打刻開始時間</th>
           <th>打刻終了時間</th>
-          <th>総時間</th>
+          <th>総時間(日)</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <%= month_calendar events: @stamp_list do |date, stamp| %>
+        <% @month.each do |day| %>
+        <% list = current_user.time_stamps.stamp_list(day) %>
           <tr>
-            <td><%= date.day %></td>
-              <% stamp.each do |stamp| %>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <%= link_to time_stamp_path(stamp.id) do %>
-                    <button type = "button" class = "btn btn-warning">詳細</button>
-                  <% end %>
-                </td>
+            <td><%= day.strftime("%m/%d") %></td>
+            <td><%= day.strftime("%a") %></td>
+            <td><%= list.start_time.strftime("%H:%M") if list.present? %></td>
+              <td><%= list.end_time.strftime("%H:%M") if list.present? && list.end_time.present?%></td>
+            <td><%= list.day_total_time.round(2) if list.present? %></td>
+            <td>
+              <% if list.present? %>
+                <%= link_to "詳細", time_stamp_path(list.id), class: "btn btn-sm btn-warning" %>
               <% end %>
+            </td>
           </tr>
-        <% end %>
+         <% end %>
       </tbody>
     </table>
   </div>

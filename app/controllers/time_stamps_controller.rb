@@ -21,8 +21,10 @@ class TimeStampsController < ApplicationController
   end
 
   def stamp_list
-    @date = Date.today()
-    @stamp_list = TimeStamp.where(user_id: current_user)
+    params[:month] = Date.current.strftime('%Y%m%d') unless params[:month]
+    @month = (0..31).to_a.map{ |i| (Date.parse(params[:month]).beginning_of_month+i) if Date.parse(params[:month]).end_of_month.strftime('%d').to_i > i}.compact
+    #@stamp_list = TimeStamp.where(user_id: current_user)
+    @date = Date.parse(params[:month])
   end
 
   def show

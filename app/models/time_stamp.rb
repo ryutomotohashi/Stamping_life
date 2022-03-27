@@ -7,6 +7,13 @@ class TimeStamp < ApplicationRecord
 
   #1日の合計を出すメソッド
   def day_total_time
-    (end_time-start_time)/3600.to_i
+    if end_time.present?
+      (end_time-start_time)/3600.to_i
+    else
+      total_time = 0.to_i
+    end
+  end
+  def self.stamp_list(day)
+    self.find_by(date: day)
   end
 end

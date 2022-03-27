@@ -14,11 +14,19 @@
   </tr>
   <tr>
     <th>Follow数</th>
-    <th><%= link_to "0" %></th>
+    <th>
+      <%= link_to user_followings_path(user) do %>
+        <%= user.followings.count %>
+      <% end %>
+    </th>
   </tr>
   <tr>
     <th>Follower数</th>
-    <th><%= link_to "0" %></th>
+    <th>
+      <%= link_to user_followers_path(user) do %>
+        <%= user.followers.count %>
+      <% end %>
+    </th>
   </tr>
   <tr>
   <% if current_user != user  %>

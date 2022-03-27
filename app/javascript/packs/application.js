@@ -14,7 +14,7 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
-require("time_stamps/realtime")
+//require("time_stamps/realtime")
 
 Rails.start()
 Turbolinks.start()

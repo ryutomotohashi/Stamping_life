@@ -1,6 +1,7 @@
 <div class = "container py-5">
+  <%= link_to "打刻一覧画面に戻る", stamp_list_path, class: "text-secondary" %>
   <div class = "row d-flex justify-content-center">
-    <div class = "col-8">
+    <div class = "col-4">
       <div class = "card">
         <h3 class = "card-header">
           日付<strong><%= @stamp.date.strftime("%m月 %d日") %></strong>
@@ -10,7 +11,24 @@
             開始時間:<strong><%= @stamp.start_time.strftime("%H:%M") %></strong>
           </h3>
           <h3 class = "card-text">
-            終了時間:<strong><%= @stamp.end_time.strftime("%H:%M") %></strong>
+            <% if @stamp.end_time.nil? %>
+              終了時間: -
+            <% else %>
+              終了時間:<strong><%= @stamp.end_time.strftime("%H:%M") %></strong>
+            <% end %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class = "col-4">
+      <div class = "card">
+        <h3 class = "card-header">
+          修正
+        </h3>
+        <div class = "card-body">
+          <h3 class = "card-text">
+          </h3>
+          <h3 class = "card-text">
           </h3>
         </div>
       </div>
