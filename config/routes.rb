@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   #打刻終了
   patch "time_stamps/:id" => "time_stamps#end_stamp", as: "end_stamp"
   #打刻一覧画面
-  get "stamplists" => "time_stamps#stamp_list", as: "stamp_list"
+  get "stamplists" => "time_stamps#stamp_lists", as: "stamp_lists"
+  get "stamplists/:id" => "time_stamps#show", as: "stamp_list"
+  patch "stamplists/:id" => "time_stamps#update"
   #打刻詳細画面とデータ更新
-  resources :time_stamps, only:[:show, :uodate]
 end

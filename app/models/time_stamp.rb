@@ -13,7 +13,12 @@ class TimeStamp < ApplicationRecord
       total_time = 0.to_i
     end
   end
+
   def self.stamp_list(day)
     self.find_by(date: day)
+  end
+
+  def time_update
+
   end
 end

@@ -1,5 +1,5 @@
 <div class = "container py-5">
-  <%= link_to "打刻一覧画面に戻る", stamp_list_path, class: "text-secondary" %>
+  <%= link_to "打刻一覧画面に戻る", stamp_lists_path, class: "text-secondary" %>
   <div class = "row d-flex justify-content-center">
     <div class = "col-4">
       <div class = "card">
@@ -26,10 +26,17 @@
           修正
         </h3>
         <div class = "card-body">
-          <h3 class = "card-text">
-          </h3>
-          <h3 class = "card-text">
-          </h3>
+          <%= form_with model: @stamp, url: stamp_list_path(@stamp), method: :patch, local: true do |f| %>
+            <h3 class = "mb-3">
+              <%= f.label :start_time, "開始時間" %>
+              <%= f.time_select :start_time, class: "form-controll" %>
+            </h3>
+            <h3 class = "mb-3">
+              <%= f.label :end_time, "開始時間" %>
+              <%= f.time_select :end_time, class: "form-controll" %>
+            </h3>
+            <%= f.submit "変更", class: "btn btn-sm btn-warning" %>
+          <% end %>
         </div>
       </div>
     </div>

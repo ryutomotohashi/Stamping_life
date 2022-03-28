@@ -4,11 +4,11 @@
       <h3>総時間(月)<%= %></h3>
     </div>
     <div class = "col-6 d-flex justify-content-center">
-      <%= link_to action: "stamp_list", month: @date.last_month do %>
+      <%= link_to action: "stamp_lists", month: @date.last_month do %>
         <i class="fas fa-angle-left fa-2x text-secondary"></i>
       <% end %>
       <h3><%= "#{@date.year}年#{@date.month}月" %></h3>
-      <%= link_to action: "stamp_list", month: @date.next_month do %>
+      <%= link_to action: "stamp_lists", month: @date.next_month do %>
         <i class="fas fa-angle-right fa-2x text-secondary"></i>
       <% end %>
     </div>
@@ -36,7 +36,7 @@
             <td><%= list.day_total_time.round(2) if list.present? %></td>
             <td>
               <% if list.present? %>
-                <%= link_to "詳細", time_stamp_path(list.id), class: "btn btn-sm btn-warning" %>
+                <%= link_to "詳細", stamp_list_path(list.id), class: "btn btn-sm btn-warning" %>
               <% end %>
             </td>
           </tr>
