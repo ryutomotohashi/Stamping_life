@@ -1,5 +1,5 @@
-<h3>Userの目標一覧</h3>
 <div class = "container pb-2">
+  <h3>みんなの目標が見れるよ</h3>
   <% @targets.each do |target| %>
     <%= link_to target_path(target), class: "hover" do %>
       <div class = "row mt-2 bg-light text-center">
@@ -13,7 +13,7 @@
           <%= target.title %>
         </div>
         <div class = "col-3">
-          <p>時間100時間</p>
+          <p></p>
         </div>
       </div>
     <% end %>
