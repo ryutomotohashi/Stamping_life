@@ -54,5 +54,5 @@ if Rails.env.production?
     true
   )
 
-  daemonize
+  # daemonize
 end
