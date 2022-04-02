@@ -1,5 +1,4 @@
 <% if @users.exists? %>
-  <% @users.each do |user| %>
     <table class="table">
       <thead>
         <tr>
@@ -10,21 +9,22 @@
           <th scope="col"><!--フォローするボタン--></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to user_path(user) do %>
-              <%= image_tag user.get_icon, size: "50x50", class: "mt-3 rounded-circle" %>
-            <% end %>
-          </td>
-          <td><%= user.name %></td>
-          <td><%= user.followings.count %></td>
-          <td><%= user.followers.count %></td>
-          <td><%= render "relationships/btn" , user: user %></td>
-        </tr>
-      </tbody>
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= image_tag user.get_icon, size: "50x50", class: "mt-3 rounded-circle" %>
+              <% end %>
+            </td>
+            <td><%= user.name %></td>
+            <td><%= user.followings.count %></td>
+            <td><%= user.followers.count %></td>
+            <td><%= render "relationships/btn" , user: user %></td>
+          </tr>
+        </tbody>
+      <% end %>
     </table>
-  <% end %>
 <% else %>
   一覧はありません
 <% end %>
