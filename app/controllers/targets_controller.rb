@@ -12,7 +12,6 @@ class TargetsController < ApplicationController
     if @target.save
       redirect_to user_path(current_user), notice: "目標を登録しました"
     else
-      @target = Target.new
       render :new
     end
   end

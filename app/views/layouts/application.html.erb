@@ -81,17 +81,12 @@
       </div>
     </header>
     <main>
-    <% if flash[:notice] %>
-        <div class = "text-success">
-          <p class = "notice"><% notice %></p>
+      <% if flash[:notice] %>
+        <div class="alert alert-success text-align-center" role="alert">
+          <p id = "notice"><%= notice %></p>
         </div>
       <% end %>
 
-      <% if flash[:alert] %>
-        <div class = "text-danger">
-          <p class = "alert"><% alert %></p>
-        </div>
-      <% end %>
       <%= yield %>
     </main>
     <footer class = "footer bg-warning">

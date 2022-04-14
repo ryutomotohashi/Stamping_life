@@ -10,7 +10,7 @@
           </div>
           <div class = "mb-3">
             <%= f.label :description, "目標の詳細説明や質問", class: "form-label"%><br />
-            <%= f.text_field :description,  placeholder: "詳細な説明や質問を150文字以内で入力してください",class: "form-control" %>
+            <%= f.text_area :description,  placeholder: "詳細な説明や質問を150文字以内で入力してください",class: "form-control" %>
           </div>
           <div class = "mb-3">
             <%= f.submit "目標を登録する" , class: "btn btn-warning"%>
