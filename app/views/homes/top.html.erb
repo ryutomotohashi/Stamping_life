@@ -1,17 +1,41 @@
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Stamping Life</h1>
-      <p class="lead fw-normal">自分の目標への手がかりを見つけよう</p>
-      <% if user_signed_in? %>
-        <%= link_to new_target_path do %>
-          <button type = "button" class = "btn btn-secondary">目標を登録する</button>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_registration_path do %>
-          <button type = "button" class = "btn btn-secondary">登録して始める</button>
-        <% end %>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4 fw-normal">Stamping Life</h1>
+    <p class="lead fw-normal">自分の目標への手がかりを見つけよう</p>
+    <% if user_signed_in? %>
+      <%= link_to new_target_path do %>
+        <button type = "button" class = "btn btn-secondary">目標を登録する</button>
       <% end %>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    <% else %>
+      <%= link_to new_user_registration_path do %>
+        <button type = "button" class = "btn btn-secondary">登録して始める</button>
+      <% end %>
+    <% end %>
   </div>
+  <div class="product-device shadow-sm d-none d-md-block"></div>
+  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+<div class = "container">
+   <div class = "row justify-content-center">
+      <div class = "col-10 text-center">
+        <h2>目標の投稿。<span class = "text-muted">~共有~</span></h2>
+        <p>自分の目標を投稿する事で、自分と同じ目標を持つ仲間を見つける。互いが互いを刺激する事で自分のモチベーションを維持して、自分を見つめ直していこう。</p>
+      </div>
+    </div>
+    <hr>
+    <div class = "row justify-content-center">
+      <div class = "col-10 text-center">
+        <h2>時間の記録。<span class = "text-muted">~打刻~</span></h2>
+        <p>打刻する事で自分自身のスイッチを可視化しよう。普段は見えないやる気も可視化したボタンがあれば、何かがきっと変わるはず。まずは押してみよう。自分の中の"意識"というボタンが押されるはず。</p>
+      </div>
+    </div>
+    <hr>
+    <div class = "row justify-content-center">
+      <div class = "col-10 text-center">
+        <h2>仲間に質問。<span class = "text-muted">~聞く~</span></h2>
+        <p>努力にも"壁"は必ずあるはず。自分と同じ"目標を追う者"に質問してみよう。何か答えがあるかもしれない。答えは見つからずとも何か解決に導く"きっかけ"があるかもしれない。</p>
+      </div>
+    </div>
+    <hr>
+</div>
