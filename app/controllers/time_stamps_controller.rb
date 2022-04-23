@@ -2,6 +2,7 @@ class TimeStampsController < ApplicationController
 
   def time_stamps
     @stamp = TimeStamp.find_by(end_time: nil, user_id: current_user.id)
+    @date = Date.current
   end
 
   def start_stamp
