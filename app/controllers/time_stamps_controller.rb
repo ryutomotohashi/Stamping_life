@@ -34,10 +34,11 @@ class TimeStampsController < ApplicationController
   def update
     @stamp = TimeStamp.find(params[:id])
     #パラメータをstart_timeの各日付と時間(1i~5i)に割り当て
-    @stamp.start_time = Time.new(params[:time_stamp]['start_time(1i)'].to_i, params[:time_stamp]['start_time(2i)'].to_i, params[:time_stamp]['start_time(3i)'].to_i, params[:time_stamp]['start_time(4i)'].to_i, params[:time_stamp]['start_time(5i)'].to_i)
+    # @stamp.start_time = Time.new(params[:time_stamp]['start_time(1i)'].to_i, params[:time_stamp]['start_time(2i)'].to_i, params[:time_stamp]['start_time(3i)'].to_i, params[:time_stamp]['start_time(4i)'].to_i, params[:time_stamp]['start_time(5i)'].to_i)
     #パラメータをend_timeの各日付と時間(1i~5i)に割り当て
-    @stamp.end_time = Time.new(params[:time_stamp]['end_time(1i)'].to_i, params[:time_stamp]['end_time(2i)'].to_i, params[:time_stamp]['end_time(3i)'].to_i, params[:time_stamp]['end_time(4i)'].to_i, params[:time_stamp]['end_time(5i)'].to_i)
-    if @stamp.save
+    # @stamp.end_time = Time.new(params[:time_stamp]['end_time(1i)'].to_i, params[:time_stamp]['end_time(2i)'].to_i, params[:time_stamp]['end_time(3i)'].to_i, params[:time_stamp]['end_time(4i)'].to_i, params[:time_stamp]['end_time(5i)'].to_i)
+    
+    if @stamp.update
       #binding.pry
       redirect_to stamp_list_path, notice: "正常に更新しました"
     else

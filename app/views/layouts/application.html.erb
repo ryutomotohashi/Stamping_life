@@ -2,20 +2,20 @@
 <html>
   <head>
     <title>StampingLife</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script>
       function twoDigit(num) {
-      let ret;
-      if( num < 10 )
-        ret = "0" + num;
-      else
-        ret = num;
-      return ret;
-      }
+        let ret;
+        if( num < 10 )
+          ret = "0" + num;
+        else
+          ret = num;
+        return ret;
+        }
       function showClock() {
         let nowTime = new Date();
         let nowHour = twoDigit( nowTime.getHours() );
@@ -23,65 +23,67 @@
         let nowSec  = twoDigit( nowTime.getSeconds() );
         let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
         document.getElementById("realtime").innerHTML = msg;
-      }
+        }
       setInterval('showClock()',1000);
     </script>
+    
   </head>
 
-  <body>
-    <header>
-      <div class="px-3 py-2 bg-warning text-white">
+  <body class = "d-flex flex-column vh-100">
+    <header class = "shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
         <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
-            <%= link_to root_path, class: "d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white" do %>
-              STAMPING LIFE
-            <% end %>
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <a class="navbar-brand p-3" href="/"><%= image_tag("stampinglife.png") %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li>
+                <li class = "nav-item">
                   <%= link_to root_path, class: "nav-link text-light" do %>
                     <i class="fas fa-home fa-2x bi d-block mx-auto"></i>
                     HOME
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to user_path(current_user), class: "nav-link text-light" do %>
                     <i class="fas fa-user-circle fa-2x bi d-block mx-auto"></i>
                     MY PAGE
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to targets_path, class: "nav-link text-light" do %>
                     <i class="fas fa-users fa-2x bi d-block mx-auto"></i>
                     TARGETS
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to time_stamps_path, class: "nav-link text-light" do %>
                     <i class="fas fa-clock fa-2x bi d-block mx-auto"></i>
                     STAMPING
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
                     <i class="fas fa-sign-in-alt fa-2x bi d-block mx-auto"></i>
                     LOG-OUT
                   <% end %>
                 </li>
               <% else %>
-                <li>
+                <li class = "nav-item">
                   <%= link_to root_path, class: "nav-link text-light" do %>
                    <i class="fas fa-home fa-2x bi d-block mx-auto"></i>
                    HOME
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
                     <i class="fas fa-plus-circle fa-2x bi d-block mx-auto"></i>
                     新規登録
                   <% end %>
                 </li>
-                <li>
+                <li class = "nav-item">
                   <%= link_to new_user_session_path, class: "nav-link text-light" do %>
                     <i class="fas fa-sign-in-alt fa-2x bi d-block mx-auto"></i>
                     LOG-IN
@@ -91,7 +93,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
     <main>
       <% if flash[:notice] %>
@@ -104,7 +106,7 @@
     </main>
     <footer class = "footer bg-warning">
       <div class = "d-flex justify-content-center">
-        STAMPING LIFE
+        <%= image_tag("stampinglife.png") %>
       </div>
       <div class = "text-center text-light">
         <p>
